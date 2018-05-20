@@ -6,10 +6,58 @@
 
       >
     <h:head>
-        <title>Punto 01</title>
+        <title>Punto 02</title>
     </h:head>
     <h:body>
-       
+        <h:form id="frmLibros">
+            <p:panel id="pnlLibros"
+                     header="Listado Libros"
+                     footer="Esc Minas 2018 TP 05 Guzman"> 
+                <p:panelGrid id="pnlIngreso"
+                             columns="2">
+                    <p:outputLabel id="lblNombre"
+                                   value="Ingrese Nombre del libro">
+                    </p:outputLabel>
+                    <p:inputText id="inputNombre"
+                                 value="#{librosFormBean.nombre}"
+                                 required="true">
+                    </p:inputText>
+                    <p:outputLabel id="lblAutor"
+                                   value="Ingrese Autor del Libro">
+                    </p:outputLabel>
+                    <p:inputText id="inputAutor"
+                                 value="#{librosFormBean.autor}"
+                                 required="true">
+                    </p:inputText>
+                    <p:commandButton id="btnAgregarLibro"
+                                     value="Agregar"
+                                     actionListener="#{librosFormBean.agregarLibro()}"
+                                     update="frmLibros">
+                    </p:commandButton>
+                    <p:commandButton id="btnReiniciarLibro"
+                                     value="Reiniciar"
+                                     actionListener="#{librosFormBean.reiniciar()}"
+                                     update="frmLibros">
+                    </p:commandButton>
+                </p:panelGrid>
+                <p:dataTable id="tblMostrarLibros" 
+                             value="#{librosFormBean.listadoLibros.listadoLibros}"
+                             var="cadaLibro"
+                             emptyMessage="No hay Libros">
+                    <p:column headerText="Nombre">
+                         <p:outputLabel id="txtNombre" 
+                                        value="#{cadaLibro.nombre}">
+                         </p:outputLabel>
+                    </p:column>
+                    <p:column headerText="Autor">
+                         <p:outputLabel id="txtAutor"
+                                        value="#{cadaLibro.autor}">
+                         </p:outputLabel>
+    
+                    </p:column>
+                </p:dataTable>                          
+            </p:panel>
+        </h:form>
     </h:body>
 </html>
 
