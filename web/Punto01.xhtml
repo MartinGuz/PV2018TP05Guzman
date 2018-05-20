@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+
+      >
+    <h:head>
+        <title>Punto 01</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel id="pnlPalabras" 
+                     header="Listado de Palabras"
+                     footer="TP05 Guzman"> 
+                <p:panelGrid id="panlPalabras" 
+                             columns="2">
+                    <p:outputLabel id="lblIngresar" 
+                                   value="Ingrese una Palabra"/>
+                    <p:inputText id="inputPalabra" 
+                                 value="#{palabrasFormBean.palabraIngresada}" 
+                                 required="true">
+                    </p:inputText>
+                    <p:commandButton id="btnAgregar" 
+                                     value="Agregar"
+                                     actionListener="#{palabrasFormBean.agregarPalabra()}"
+                                     update="pnlPalabras"/>
+                    <p:commandButton id="btnReiniciar"
+                                     value="Reiniciar"
+                                     actionListener="#{palabrasFormBean.reiniciar()}"
+                                     update="pnlPalabras"/>
+                </p:panelGrid>
+                <p:panelGrid columns="1">
+                    <p:dataTable id="tblMostrar" value="#{palabrasFormBean.listadoPalabras}" 
+                                 var="cadapalabra" 
+                                 emptyMessage="No hay Palabras">
+                        <p:column headerText="Palabra">
+                            <p:outputLabel id="txtPalabra" value="#{cadapalabra}"/> 
+                        </p:column>
+                    </p:dataTable>
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+
